@@ -1,0 +1,15 @@
+Gladys Isypower integration
+Copyright 2026 William Deren
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+The data are read from Isypower Cloud (application.izypowercloud.fr), the cloud
+of the Isypower range of Materfrance, with the account of the user. Its API has
+no public documentation: the endpoints, headers and payloads come from the Home
+Assistant integration izypower_cloud by Stefan Plizga
+(https://github.com/StefanPlizga/izypower_cloud), released under the MIT
+License. No code of that project is included; this integration is a new
+implementation in JavaScript.
+
+This community integration is not affiliated with, endorsed or sponsored by
+Materfrance or Isypower.

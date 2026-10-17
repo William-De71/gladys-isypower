@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="534" viewBox="0 0 800 534">
+  <!-- Cover of the Isypower integration for Gladys Assistant (illustration,
+       not the logo of Isypower nor of Materfrance). A house with solar panels
+       under the sun, a home battery and the flows of energy. Built into
+       cover.jpg by scripts/build-cover.sh. -->
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1e5fa8"/>
+      <stop offset="0.65" stop-color="#5fa5e0"/>
+      <stop offset="1" stop-color="#bfe0f5"/>
+    </linearGradient>
+    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5c9e4a"/>
+      <stop offset="1" stop-color="#2f6630"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2b4f8c"/>
+      <stop offset="1" stop-color="#0f2547"/>
+    </linearGradient>
+    <linearGradient id="battery" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f4f6f8"/>
+      <stop offset="1" stop-color="#cfd6de"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#fff3b0" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#fff3b0" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="534" fill="url(#sky)"/>
+
+  <!-- sun -->
+  <circle cx="640" cy="110" r="120" fill="url(#glow)"/>
+  <circle cx="640" cy="110" r="46" fill="#ffd34d"/>
+  <g stroke="#ffd34d" stroke-width="8" stroke-linecap="round">
+    <line x1="640" y1="30" x2="640" y2="48"/>
+    <line x1="640" y1="172" x2="640" y2="190"/>
+    <line x1="560" y1="110" x2="578" y2="110"/>
+    <line x1="702" y1="110" x2="720" y2="110"/>
+    <line x1="583" y1="53" x2="596" y2="66"/>
+    <line x1="684" y1="154" x2="697" y2="167"/>
+    <line x1="583" y1="167" x2="596" y2="154"/>
+    <line x1="684" y1="66" x2="697" y2="53"/>
+  </g>
+
+  <!-- ground -->
+  <path d="M0 400 C 200 380, 420 392, 800 375 L800 534 L0 534 Z" fill="url(#ground)"/>
+
+  <!-- house -->
+  <rect x="190" y="268" width="270" height="160" fill="#f3ead8"/>
+  <rect x="190" y="268" width="270" height="160" fill="none" stroke="#cdbf9f" stroke-width="3"/>
+  <path d="M160 280 L325 150 L490 280 Z" fill="#a8432e"/>
+  <!-- panels on the roof, along the slope -->
+  <g fill="url(#panel)" stroke="#9fb7d9" stroke-width="2" stroke-linejoin="round">
+    <polygon points="215.6,254.8 245.3,231.4 265.5,240.5 235.8,263.9"/>
+    <polygon points="237.4,264.7 267.1,241.3 287.3,250.4 257.6,273.8"/>
+    <polygon points="246.9,230.1 276.6,206.7 296.8,215.8 267.1,239.2"/>
+    <polygon points="268.8,240.0 298.5,216.6 318.6,225.7 288.9,249.1"/>
+    <polygon points="278.3,205.4 308.0,182.0 328.2,191.1 298.5,214.5"/>
+    <polygon points="300.1,215.3 329.8,191.9 350.0,201.0 320.3,224.4"/>
+  </g>
+  <!-- door and windows -->
+  <rect x="300" y="340" width="52" height="88" rx="4" fill="#6b4a2f"/>
+  <rect x="220" y="310" width="56" height="48" fill="#cfe8fb" stroke="#8a7a5a" stroke-width="3"/>
+  <rect x="378" y="310" width="56" height="48" fill="#ffe9a6" stroke="#8a7a5a" stroke-width="3"/>
+
+  <!-- battery -->
+  <rect x="540" y="300" width="92" height="138" rx="12" fill="url(#battery)" stroke="#9aa6b2" stroke-width="3"/>
+  <rect x="566" y="290" width="40" height="14" rx="4" fill="#9aa6b2"/>
+  <rect x="556" y="318" width="60" height="102" rx="6" fill="#e4e9ee"/>
+  <rect x="556" y="360" width="60" height="60" rx="6" fill="#33b864"/>
+  <path d="M590 330 L574 360 L588 360 L582 384 L602 350 L588 350 Z" fill="#ffd34d" stroke="#d9a300" stroke-width="1.5"/>
+
+  <!-- energy flows -->
+  <g fill="none" stroke="#ffd34d" stroke-width="6" stroke-linecap="round" stroke-dasharray="2 16">
+    <path d="M588 196 C 560 240, 470 230, 400 215"/>
+    <path d="M462 380 C 495 380, 510 372, 538 372"/>
+  </g>
+  <!-- grid pylon -->
+  <g stroke="#55606e" stroke-width="5" fill="none" stroke-linejoin="round">
+    <path d="M90 420 L118 250 L146 420"/>
+    <path d="M100 360 L136 360 M106 320 L130 320 M112 285 L124 285"/>
+    <path d="M78 270 L158 270"/>
+  </g>
+  <path d="M160 270 C 175 285, 182 300, 190 318" fill="none" stroke="#55606e" stroke-width="3"/>
+
+  <!-- title -->
+  <rect x="40" y="452" width="720" height="62" rx="14" fill="#0f2547" opacity="0.82"/>
+  <text x="400" y="494" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="30" font-weight="bold" fill="#ffffff">Isypower <tspan fill="#ffd34d">·</tspan> Gladys Assistant</text>
+</svg>

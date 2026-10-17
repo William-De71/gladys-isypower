@@ -1,0 +1,581 @@
+{
+  "devices": {
+    "station": {
+      "external_id": "ext:isypower:station:41235",
+      "should_poll": false,
+      "params": ["STATION_ID", "INSTALLED_CAPACITY_W"],
+      "features": [
+        {
+          "external_id": "ext:isypower:station:41235:production_power",
+          "category": "energy-production-sensor",
+          "type": "power",
+          "unit": "watt",
+          "min": 0,
+          "max": 100000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:isypower:station:41235:production_index",
+          "category": "energy-production-sensor",
+          "type": "index",
+          "unit": "kilowatt-hour",
+          "min": 0,
+          "max": 100000000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:isypower:station:41235:consumption_power",
+          "category": "energy-sensor",
+          "type": "power",
+          "unit": "watt",
+          "min": 0,
+          "max": 100000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:isypower:station:41235:grid_power",
+          "category": "grid-sensor",
+          "type": "power",
+          "unit": "watt",
+          "min": -100000,
+          "max": 100000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:isypower:station:41235:grid_import_index",
+          "category": "energy-sensor",
+          "type": "index",
+          "unit": "kilowatt-hour",
+          "min": 0,
+          "max": 100000000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:isypower:station:41235:grid_export_index",
+          "category": "grid-sensor",
+          "type": "output-index",
+          "unit": "kilowatt-hour",
+          "min": 0,
+          "max": 100000000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:isypower:station:41235:battery_level",
+          "category": "battery-storage",
+          "type": "battery-level",
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:isypower:station:41235:battery_charge_power",
+          "category": "battery-storage",
+          "type": "charge-power",
+          "unit": "watt",
+          "min": 0,
+          "max": 100000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:isypower:station:41235:battery_discharge_power",
+          "category": "battery-storage",
+          "type": "discharge-power",
+          "unit": "watt",
+          "min": 0,
+          "max": 100000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:isypower:station:41235:battery_charge_index",
+          "category": "battery-storage",
+          "type": "charge-index",
+          "unit": "kilowatt-hour",
+          "min": 0,
+          "max": 100000000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:isypower:station:41235:battery_discharge_index",
+          "category": "battery-storage",
+          "type": "discharge-index",
+          "unit": "kilowatt-hour",
+          "min": 0,
+          "max": 100000000,
+          "read_only": true,
+          "has_feedback": false
+        }
+      ],
+      "options": {}
+    },
+    "stationWithoutBattery": {
+      "external_id": "ext:isypower:station:9",
+      "should_poll": false,
+      "params": ["STATION_ID", "INSTALLED_CAPACITY_W"],
+      "features": [
+        {
+          "external_id": "ext:isypower:station:9:production_power",
+          "category": "energy-production-sensor",
+          "type": "power",
+          "unit": "watt",
+          "min": 0,
+          "max": 100000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:isypower:station:9:production_index",
+          "category": "energy-production-sensor",
+          "type": "index",
+          "unit": "kilowatt-hour",
+          "min": 0,
+          "max": 100000000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:isypower:station:9:consumption_power",
+          "category": "energy-sensor",
+          "type": "power",
+          "unit": "watt",
+          "min": 0,
+          "max": 100000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:isypower:station:9:grid_power",
+          "category": "grid-sensor",
+          "type": "power",
+          "unit": "watt",
+          "min": -100000,
+          "max": 100000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:isypower:station:9:grid_import_index",
+          "category": "energy-sensor",
+          "type": "index",
+          "unit": "kilowatt-hour",
+          "min": 0,
+          "max": 100000000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:isypower:station:9:grid_export_index",
+          "category": "grid-sensor",
+          "type": "output-index",
+          "unit": "kilowatt-hour",
+          "min": 0,
+          "max": 100000000,
+          "read_only": true,
+          "has_feedback": false
+        }
+      ],
+      "options": {}
+    },
+    "battery": {
+      "external_id": "ext:isypower:battery:izb5k0001234",
+      "should_poll": false,
+      "params": ["SERIAL_NUMBER", "STATION_ID", "FIRMWARE"],
+      "features": [
+        {
+          "external_id": "ext:isypower:battery:izb5k0001234:level",
+          "category": "battery-storage",
+          "type": "battery-level",
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:isypower:battery:izb5k0001234:energy",
+          "category": "battery-storage",
+          "type": "battery-energy-remaining",
+          "unit": "kilowatt-hour",
+          "min": 0,
+          "max": 1000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:isypower:battery:izb5k0001234:charge_power",
+          "category": "battery-storage",
+          "type": "charge-power",
+          "unit": "watt",
+          "min": 0,
+          "max": 100000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:isypower:battery:izb5k0001234:discharge_power",
+          "category": "battery-storage",
+          "type": "discharge-power",
+          "unit": "watt",
+          "min": 0,
+          "max": 100000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:isypower:battery:izb5k0001234:temperature",
+          "category": "device-temperature-sensor",
+          "type": "decimal",
+          "unit": "celsius",
+          "min": -40,
+          "max": 100,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:isypower:battery:izb5k0001234:off_grid_power",
+          "category": "home-output-sensor",
+          "type": "off-grid-power",
+          "unit": "watt",
+          "min": 0,
+          "max": 100000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:isypower:battery:izb5k0001234:control_mode",
+          "category": "text",
+          "type": "select",
+          "min": 0,
+          "max": 0,
+          "read_only": false,
+          "has_feedback": true
+        },
+        {
+          "external_id": "ext:isypower:battery:izb5k0001234:manual_mode",
+          "category": "text",
+          "type": "select",
+          "min": 0,
+          "max": 0,
+          "read_only": false,
+          "has_feedback": true
+        }
+      ],
+      "options": {
+        "ext:isypower:battery:izb5k0001234:control_mode": ["intelligent", "manual", "calendar"],
+        "ext:isypower:battery:izb5k0001234:manual_mode": ["standby", "charge", "discharge"]
+      }
+    },
+    "slaveBattery": {
+      "external_id": "ext:isypower:battery:slave1",
+      "should_poll": false,
+      "params": ["SERIAL_NUMBER", "STATION_ID", "FIRMWARE"],
+      "features": [
+        {
+          "external_id": "ext:isypower:battery:slave1:level",
+          "category": "battery-storage",
+          "type": "battery-level",
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:isypower:battery:slave1:energy",
+          "category": "battery-storage",
+          "type": "battery-energy-remaining",
+          "unit": "kilowatt-hour",
+          "min": 0,
+          "max": 1000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:isypower:battery:slave1:charge_power",
+          "category": "battery-storage",
+          "type": "charge-power",
+          "unit": "watt",
+          "min": 0,
+          "max": 100000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:isypower:battery:slave1:discharge_power",
+          "category": "battery-storage",
+          "type": "discharge-power",
+          "unit": "watt",
+          "min": 0,
+          "max": 100000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:isypower:battery:slave1:temperature",
+          "category": "device-temperature-sensor",
+          "type": "decimal",
+          "unit": "celsius",
+          "min": -40,
+          "max": 100,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:isypower:battery:slave1:off_grid_power",
+          "category": "home-output-sensor",
+          "type": "off-grid-power",
+          "unit": "watt",
+          "min": 0,
+          "max": 100000,
+          "read_only": true,
+          "has_feedback": false
+        }
+      ],
+      "options": {}
+    }
+  },
+  "manifest": {
+    "actions": ["refresh", "diagnostic"],
+    "config_schema": [
+      {
+        "key": "username",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "type": "secret"
+      },
+      {
+        "key": "interval",
+        "type": "select"
+      },
+      {
+        "key": "language",
+        "type": "select"
+      }
+    ],
+    "scene_triggers": [
+      {
+        "key": "battery_state_changed",
+        "fields": [
+          {
+            "key": "battery",
+            "options": []
+          },
+          {
+            "key": "state",
+            "options": ["charging", "discharging", "standby"]
+          }
+        ],
+        "variables": [
+          {
+            "key": "battery_name",
+            "type": "string"
+          },
+          {
+            "key": "state",
+            "type": "string"
+          },
+          {
+            "key": "previous_state",
+            "type": "string"
+          },
+          {
+            "key": "level",
+            "type": "number"
+          },
+          {
+            "key": "power",
+            "type": "number"
+          },
+          {
+            "key": "station_name",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "key": "equipment_connection_changed",
+        "fields": [
+          {
+            "key": "station",
+            "options": []
+          },
+          {
+            "key": "state",
+            "options": ["offline", "online"]
+          },
+          {
+            "key": "equipment_type",
+            "options": ["vm", "battery", "meter", "evse"]
+          }
+        ],
+        "variables": [
+          {
+            "key": "equipment_name",
+            "type": "string"
+          },
+          {
+            "key": "equipment_type_name",
+            "type": "string"
+          },
+          {
+            "key": "state",
+            "type": "string"
+          },
+          {
+            "key": "station_name",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "key": "firmware_update_available",
+        "fields": [
+          {
+            "key": "station",
+            "options": []
+          }
+        ],
+        "variables": [
+          {
+            "key": "equipment_name",
+            "type": "string"
+          },
+          {
+            "key": "station_name",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "key": "station_reporting_changed",
+        "fields": [
+          {
+            "key": "station",
+            "options": []
+          },
+          {
+            "key": "state",
+            "options": ["stale", "reporting"]
+          }
+        ],
+        "variables": [
+          {
+            "key": "state",
+            "type": "string"
+          },
+          {
+            "key": "minutes_since_update",
+            "type": "number"
+          },
+          {
+            "key": "last_update",
+            "type": "string"
+          },
+          {
+            "key": "station_name",
+            "type": "string"
+          }
+        ]
+      }
+    ],
+    "scene_actions": [
+      {
+        "key": "set_battery_mode",
+        "fields": ["battery", "control_mode", "manual_mode", "power"],
+        "outputs": [
+          {
+            "key": "control_mode",
+            "type": "string"
+          },
+          {
+            "key": "manual_mode",
+            "type": "string"
+          },
+          {
+            "key": "power",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "key": "set_minimum_charge",
+        "fields": ["battery", "level"],
+        "outputs": [
+          {
+            "key": "minimum_charge",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "key": "get_energy_report",
+        "fields": ["station", "period"],
+        "outputs": [
+          {
+            "key": "production_kwh",
+            "type": "number"
+          },
+          {
+            "key": "consumption_kwh",
+            "type": "number"
+          },
+          {
+            "key": "grid_import_kwh",
+            "type": "number"
+          },
+          {
+            "key": "grid_export_kwh",
+            "type": "number"
+          },
+          {
+            "key": "battery_charge_kwh",
+            "type": "number"
+          },
+          {
+            "key": "battery_discharge_kwh",
+            "type": "number"
+          },
+          {
+            "key": "self_sufficiency_percent",
+            "type": "number"
+          },
+          {
+            "key": "summary",
+            "type": "string"
+          }
+        ]
+      }
+    ],
+    "widgets": [
+      {
+        "key": "overview",
+        "settings": ["station"],
+        "options": {}
+      },
+      {
+        "key": "report",
+        "settings": ["station", "period"],
+        "options": {
+          "period": ["day", "month", "year", "all"]
+        }
+      },
+      {
+        "key": "battery",
+        "settings": ["battery"],
+        "options": {}
+      }
+    ]
+  }
+}

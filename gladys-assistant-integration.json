@@ -1,0 +1,1288 @@
+{
+  "manifest_version": 1,
+  "type": "device",
+  "name": "Isypower",
+  "description": {
+    "en": "Solar panels, batteries and grid exchange of your Isypower Cloud installation (Materfrance).",
+    "fr": "Panneaux solaires, batteries et échanges réseau de votre installation Isypower Cloud (Materfrance).",
+    "de": "Solarmodule, Batterien und Netzaustausch Ihrer Isypower-Cloud-Anlage (Materfrance).",
+    "es": "Paneles solares, baterías e intercambio con la red de su instalación Isypower Cloud (Materfrance)."
+  },
+  "version": "0.1.0",
+  "docker_image": "ghcr.io/william-de71/gladys-isypower:0.1.0",
+  "gladys_version": ">=5.2.0",
+  "categories": ["energy"],
+  "cover_image": "https://raw.githubusercontent.com/William-De71/gladys-isypower/main/cover.jpg",
+  "transports": ["cloud"],
+  "config_schema": [
+    {
+      "key": "intro",
+      "type": "section",
+      "label": {
+        "en": "Isypower Cloud account",
+        "fr": "Compte Isypower Cloud",
+        "de": "Isypower-Cloud-Konto",
+        "es": "Cuenta de Isypower Cloud"
+      },
+      "description": {
+        "en": "Enter the e-mail and the password you use in the Isypower Cloud application (formerly Izypower). The integration reads your stations, micro-inverters and batteries from the cloud of Materfrance every few minutes: the data leave your network through this cloud, as in the application. A wrong password stops the readings until you save again, so that the account is never locked.",
+        "fr": "Saisissez l’e-mail et le mot de passe de l’application Isypower Cloud (anciennement Izypower). L’intégration lit vos centrales, micro-onduleurs et batteries sur le cloud de Materfrance toutes les quelques minutes : les données passent par ce cloud, comme dans l’application. Un mauvais mot de passe arrête les lectures jusqu’au prochain enregistrement, pour ne jamais bloquer le compte.",
+        "de": "Geben Sie die E-Mail-Adresse und das Passwort der App Isypower Cloud (früher Izypower) ein. Die Integration liest Ihre Anlagen, Mikrowechselrichter und Batterien alle paar Minuten aus der Cloud von Materfrance: Die Daten laufen wie in der App über diese Cloud. Ein falsches Passwort stoppt die Abfragen bis zum nächsten Speichern, damit das Konto nie gesperrt wird.",
+        "es": "Introduzca el correo y la contraseña de la aplicación Isypower Cloud (antes Izypower). La integración lee sus instalaciones, microinversores y baterías en la nube de Materfrance cada pocos minutos: los datos pasan por esa nube, como en la aplicación. Una contraseña incorrecta detiene las lecturas hasta que vuelva a guardar, para no bloquear nunca la cuenta."
+      },
+      "links": [
+        {
+          "url": "https://www.isypower.fr",
+          "label": {
+            "en": "Isypower website",
+            "fr": "Site d’Isypower",
+            "de": "Website von Isypower",
+            "es": "Sitio de Isypower"
+          }
+        }
+      ]
+    },
+    {
+      "key": "username",
+      "type": "string",
+      "required": true,
+      "label": {
+        "en": "E-mail",
+        "fr": "E-mail",
+        "de": "E-Mail",
+        "es": "Correo electrónico"
+      },
+      "placeholder": {
+        "en": "you@example.com",
+        "fr": "vous@exemple.fr",
+        "de": "sie@beispiel.de",
+        "es": "usted@ejemplo.es"
+      }
+    },
+    {
+      "key": "password",
+      "type": "secret",
+      "required": true,
+      "label": {
+        "en": "Password",
+        "fr": "Mot de passe",
+        "de": "Passwort",
+        "es": "Contraseña"
+      }
+    },
+    {
+      "key": "options",
+      "type": "section",
+      "label": {
+        "en": "Options",
+        "fr": "Options",
+        "de": "Optionen",
+        "es": "Opciones"
+      },
+      "description": {
+        "en": "The boxes report to the cloud every three minutes: reading more often brings nothing.",
+        "fr": "Les boîtiers remontent leurs données au cloud toutes les trois minutes : lire plus souvent n’apporte rien.",
+        "de": "Die Boxen melden ihre Daten alle drei Minuten an die Cloud: Häufigere Abfragen bringen nichts.",
+        "es": "Las cajas envían sus datos a la nube cada tres minutos: leer más a menudo no aporta nada."
+      }
+    },
+    {
+      "key": "interval",
+      "type": "select",
+      "default": "3",
+      "required": false,
+      "label": {
+        "en": "Read every",
+        "fr": "Lire toutes les",
+        "de": "Abfrage alle",
+        "es": "Leer cada"
+      },
+      "description": {
+        "en": "About five requests per station and reading, plus two per battery.",
+        "fr": "Environ cinq requêtes par centrale et par lecture, plus deux par batterie.",
+        "de": "Etwa fünf Anfragen pro Anlage und Abfrage, plus zwei pro Batterie.",
+        "es": "Unas cinco peticiones por instalación y lectura, más dos por batería."
+      },
+      "options": [
+        {
+          "value": "3",
+          "label": {
+            "en": "3 minutes",
+            "fr": "3 minutes",
+            "de": "3 Minuten",
+            "es": "3 minutos"
+          }
+        },
+        {
+          "value": "5",
+          "label": {
+            "en": "5 minutes",
+            "fr": "5 minutes",
+            "de": "5 Minuten",
+            "es": "5 minutos"
+          }
+        },
+        {
+          "value": "10",
+          "label": {
+            "en": "10 minutes",
+            "fr": "10 minutes",
+            "de": "10 Minuten",
+            "es": "10 minutos"
+          }
+        },
+        {
+          "value": "15",
+          "label": {
+            "en": "15 minutes",
+            "fr": "15 minutes",
+            "de": "15 Minuten",
+            "es": "15 minutos"
+          }
+        }
+      ]
+    },
+    {
+      "key": "language",
+      "type": "select",
+      "default": "auto",
+      "required": false,
+      "label": {
+        "en": "Language of the texts",
+        "fr": "Langue des textes",
+        "de": "Sprache der Texte",
+        "es": "Idioma de los textos"
+      },
+      "description": {
+        "en": "Names of the devices, modes of the batteries, scene summaries. Automatic: the language of your dashboard, once an Isypower widget has been displayed (French before).",
+        "fr": "Noms des appareils, modes des batteries, résumés des scènes. Automatique : la langue de votre tableau de bord, dès qu’un widget Isypower a été affiché (français avant).",
+        "de": "Gerätenamen, Batteriemodi, Szenen-Zusammenfassungen. Automatisch: die Sprache Ihres Dashboards, sobald ein Isypower-Widget angezeigt wurde (vorher Französisch).",
+        "es": "Nombres de los dispositivos, modos de las baterías, resúmenes de escenas. Automático: el idioma de su panel, en cuanto se haya mostrado un widget de Isypower (antes, francés)."
+      },
+      "options": [
+        {
+          "value": "auto",
+          "label": {
+            "en": "Automatic",
+            "fr": "Automatique",
+            "de": "Automatisch",
+            "es": "Automático"
+          }
+        },
+        {
+          "value": "en",
+          "label": {
+            "en": "English",
+            "fr": "English",
+            "de": "English",
+            "es": "English"
+          }
+        },
+        {
+          "value": "fr",
+          "label": {
+            "en": "Français",
+            "fr": "Français",
+            "de": "Français",
+            "es": "Français"
+          }
+        },
+        {
+          "value": "de",
+          "label": {
+            "en": "Deutsch",
+            "fr": "Deutsch",
+            "de": "Deutsch",
+            "es": "Deutsch"
+          }
+        },
+        {
+          "value": "es",
+          "label": {
+            "en": "Español",
+            "fr": "Español",
+            "de": "Español",
+            "es": "Español"
+          }
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "key": "refresh",
+      "timeout_seconds": 90,
+      "label": {
+        "en": "Read now",
+        "fr": "Lire maintenant",
+        "de": "Jetzt lesen",
+        "es": "Leer ahora"
+      },
+      "description": {
+        "en": "Logs in again and reads every station and battery now, instead of waiting for the next reading.",
+        "fr": "Se reconnecte et lit toutes les centrales et batteries tout de suite, sans attendre la prochaine lecture.",
+        "de": "Meldet sich neu an und liest alle Anlagen und Batterien sofort, ohne auf die nächste Abfrage zu warten.",
+        "es": "Vuelve a iniciar sesión y lee todas las instalaciones y baterías ahora, sin esperar a la próxima lectura."
+      }
+    },
+    {
+      "key": "diagnostic",
+      "timeout_seconds": 10,
+      "label": {
+        "en": "Diagnostic",
+        "fr": "Diagnostic",
+        "de": "Diagnose",
+        "es": "Diagnóstico"
+      },
+      "description": {
+        "en": "Writes to the Logs tab what the integration read (values and shape of the answers), without the password, the token nor the serial numbers. Useful for an issue on GitHub.",
+        "fr": "Écrit dans l’onglet Journaux ce que l’intégration a lu (valeurs et forme des réponses), sans le mot de passe, le jeton ni les numéros de série. Utile pour un ticket sur GitHub.",
+        "de": "Schreibt in den Reiter Protokolle, was die Integration gelesen hat (Werte und Aufbau der Antworten), ohne Passwort, Token und Seriennummern. Nützlich für ein Issue auf GitHub.",
+        "es": "Escribe en la pestaña Registros lo que la integración ha leído (valores y forma de las respuestas), sin la contraseña, el token ni los números de serie. Útil para una incidencia en GitHub."
+      }
+    }
+  ],
+  "widgets": [
+    {
+      "key": "overview",
+      "icon": "sun",
+      "label": {
+        "en": "Solar installation",
+        "fr": "Installation solaire",
+        "de": "Solaranlage",
+        "es": "Instalación solar"
+      },
+      "description": {
+        "en": "Production, consumption, grid and battery now, with the curves of the last 24 hours.",
+        "fr": "Production, consommation, réseau et batterie en ce moment, avec les courbes des dernières 24 heures.",
+        "de": "Erzeugung, Verbrauch, Netz und Batterie jetzt, mit den Kurven der letzten 24 Stunden.",
+        "es": "Producción, consumo, red y batería ahora, con las curvas de las últimas 24 horas."
+      },
+      "settings": [
+        {
+          "key": "station",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Station",
+            "fr": "Centrale",
+            "de": "Anlage",
+            "es": "Instalación"
+          },
+          "description": {
+            "en": "Empty: the first station.",
+            "fr": "Vide : la première centrale.",
+            "de": "Leer: die erste Anlage.",
+            "es": "Vacío: la primera instalación."
+          },
+          "required": false
+        }
+      ]
+    },
+    {
+      "key": "report",
+      "icon": "bar-chart-2",
+      "label": {
+        "en": "Energy report",
+        "fr": "Bilan énergétique",
+        "de": "Energiebilanz",
+        "es": "Balance energético"
+      },
+      "description": {
+        "en": "Produced, consumed, bought and sold energy, and self-sufficiency, over a period.",
+        "fr": "Énergie produite, consommée, achetée et vendue, et autonomie, sur une période.",
+        "de": "Erzeugte, verbrauchte, bezogene und eingespeiste Energie sowie Autarkie über einen Zeitraum.",
+        "es": "Energía producida, consumida, comprada y vendida, y autosuficiencia, en un periodo."
+      },
+      "settings": [
+        {
+          "key": "station",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Station",
+            "fr": "Centrale",
+            "de": "Anlage",
+            "es": "Instalación"
+          },
+          "description": {
+            "en": "Empty: the first station.",
+            "fr": "Vide : la première centrale.",
+            "de": "Leer: die erste Anlage.",
+            "es": "Vacío: la primera instalación."
+          },
+          "required": false
+        },
+        {
+          "key": "period",
+          "type": "select",
+          "default": "day",
+          "required": false,
+          "label": {
+            "en": "Period",
+            "fr": "Période",
+            "de": "Zeitraum",
+            "es": "Periodo"
+          },
+          "options": [
+            {
+              "value": "day",
+              "label": {
+                "en": "Today",
+                "fr": "Aujourd’hui",
+                "de": "Heute",
+                "es": "Hoy"
+              }
+            },
+            {
+              "value": "month",
+              "label": {
+                "en": "This month",
+                "fr": "Ce mois-ci",
+                "de": "Dieser Monat",
+                "es": "Este mes"
+              }
+            },
+            {
+              "value": "year",
+              "label": {
+                "en": "This year",
+                "fr": "Cette année",
+                "de": "Dieses Jahr",
+                "es": "Este año"
+              }
+            },
+            {
+              "value": "all",
+              "label": {
+                "en": "Since installation",
+                "fr": "Depuis l’installation",
+                "de": "Seit Installation",
+                "es": "Desde la instalación"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "battery",
+      "icon": "battery-charging",
+      "label": {
+        "en": "Home battery",
+        "fr": "Batterie domestique",
+        "de": "Heimspeicher",
+        "es": "Batería doméstica"
+      },
+      "description": {
+        "en": "Level, power and modes of a battery, with buttons to change its mode and minimum charge.",
+        "fr": "Niveau, puissance et modes d’une batterie, avec boutons pour son mode et sa charge minimale.",
+        "de": "Ladestand, Leistung und Modi einer Batterie, mit Schaltflächen für Modus und Mindestladung.",
+        "es": "Nivel, potencia y modos de una batería, con botones para su modo y su carga mínima."
+      },
+      "settings": [
+        {
+          "key": "battery",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Battery",
+            "fr": "Batterie",
+            "de": "Batterie",
+            "es": "Batería"
+          },
+          "required": false,
+          "description": {
+            "en": "Empty: the first battery.",
+            "fr": "Vide : la première batterie.",
+            "de": "Leer: die erste Batterie.",
+            "es": "Vacío: la primera batería."
+          }
+        }
+      ]
+    }
+  ],
+  "scene_triggers": [
+    {
+      "key": "battery_state_changed",
+      "label": {
+        "en": "Isypower: battery starts charging, discharging or stops",
+        "fr": "Isypower : la batterie se charge, se décharge ou s’arrête",
+        "de": "Isypower: Batterie beginnt zu laden, zu entladen oder stoppt",
+        "es": "Isypower: la batería empieza a cargar, a descargar o se detiene"
+      },
+      "description": {
+        "en": "A battery changes state: charging, discharging or standby.",
+        "fr": "Une batterie change d’état : en charge, en décharge ou en veille.",
+        "de": "Eine Batterie wechselt ihren Zustand: Laden, Entladen oder Standby.",
+        "es": "Una batería cambia de estado: cargando, descargando o en espera."
+      },
+      "fields": [
+        {
+          "key": "battery",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Battery",
+            "fr": "Batterie",
+            "de": "Batterie",
+            "es": "Batería"
+          },
+          "required": false,
+          "description": {
+            "en": "Leave empty for any.",
+            "fr": "Laissez vide pour tous.",
+            "de": "Leer lassen für alle.",
+            "es": "Déjelo vacío para todos."
+          }
+        },
+        {
+          "key": "state",
+          "type": "multi_select",
+          "required": false,
+          "label": {
+            "en": "New state",
+            "fr": "Nouvel état",
+            "de": "Neuer Zustand",
+            "es": "Nuevo estado"
+          },
+          "description": {
+            "en": "Leave empty for any.",
+            "fr": "Laissez vide pour tous.",
+            "de": "Leer lassen für alle.",
+            "es": "Déjelo vacío para todos."
+          },
+          "options": [
+            {
+              "value": "charging",
+              "label": {
+                "en": "Charging",
+                "fr": "En charge",
+                "de": "Lädt",
+                "es": "Cargando"
+              }
+            },
+            {
+              "value": "discharging",
+              "label": {
+                "en": "Discharging",
+                "fr": "En décharge",
+                "de": "Entlädt",
+                "es": "Descargando"
+              }
+            },
+            {
+              "value": "standby",
+              "label": {
+                "en": "Standby",
+                "fr": "En veille",
+                "de": "Standby",
+                "es": "En espera"
+              }
+            }
+          ]
+        }
+      ],
+      "variables": [
+        {
+          "key": "battery_name",
+          "type": "string",
+          "label": {
+            "en": "Battery",
+            "fr": "Batterie",
+            "de": "Batterie",
+            "es": "Batería"
+          }
+        },
+        {
+          "key": "state",
+          "type": "string",
+          "label": {
+            "en": "New state",
+            "fr": "Nouvel état",
+            "de": "Neuer Zustand",
+            "es": "Nuevo estado"
+          }
+        },
+        {
+          "key": "previous_state",
+          "type": "string",
+          "label": {
+            "en": "Previous state",
+            "fr": "État précédent",
+            "de": "Vorheriger Zustand",
+            "es": "Estado anterior"
+          }
+        },
+        {
+          "key": "level",
+          "type": "number",
+          "label": {
+            "en": "Charge level (%)",
+            "fr": "Niveau de charge (%)",
+            "de": "Ladestand (%)",
+            "es": "Nivel de carga (%)"
+          }
+        },
+        {
+          "key": "power",
+          "type": "number",
+          "label": {
+            "en": "Power (W)",
+            "fr": "Puissance (W)",
+            "de": "Leistung (W)",
+            "es": "Potencia (W)"
+          }
+        },
+        {
+          "key": "station_name",
+          "type": "string",
+          "label": {
+            "en": "Station",
+            "fr": "Centrale",
+            "de": "Anlage",
+            "es": "Instalación"
+          }
+        }
+      ]
+    },
+    {
+      "key": "equipment_connection_changed",
+      "label": {
+        "en": "Isypower: equipment offline or back online",
+        "fr": "Isypower : un équipement est hors ligne ou revenu",
+        "de": "Isypower: Gerät offline oder wieder online",
+        "es": "Isypower: un equipo se desconecta o vuelve"
+      },
+      "description": {
+        "en": "A micro-inverter, a battery, a meter or a charging station stops talking to the cloud, or comes back.",
+        "fr": "Un micro-onduleur, une batterie, un compteur ou une borne ne communique plus avec le cloud, ou revient.",
+        "de": "Ein Mikrowechselrichter, eine Batterie, ein Zähler oder eine Ladestation meldet sich nicht mehr bei der Cloud oder wieder.",
+        "es": "Un microinversor, una batería, un contador o un cargador deja de comunicar con la nube, o vuelve."
+      },
+      "fields": [
+        {
+          "key": "station",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Station",
+            "fr": "Centrale",
+            "de": "Anlage",
+            "es": "Instalación"
+          },
+          "description": {
+            "en": "Leave empty for any.",
+            "fr": "Laissez vide pour tous.",
+            "de": "Leer lassen für alle.",
+            "es": "Déjelo vacío para todos."
+          },
+          "required": false
+        },
+        {
+          "key": "state",
+          "type": "select",
+          "required": false,
+          "label": {
+            "en": "Becomes",
+            "fr": "Devient",
+            "de": "Wird",
+            "es": "Pasa a"
+          },
+          "description": {
+            "en": "Leave empty for any.",
+            "fr": "Laissez vide pour tous.",
+            "de": "Leer lassen für alle.",
+            "es": "Déjelo vacío para todos."
+          },
+          "options": [
+            {
+              "value": "offline",
+              "label": {
+                "en": "Offline",
+                "fr": "Hors ligne",
+                "de": "Offline",
+                "es": "Desconectado"
+              }
+            },
+            {
+              "value": "online",
+              "label": {
+                "en": "Online",
+                "fr": "En ligne",
+                "de": "Online",
+                "es": "Conectado"
+              }
+            }
+          ]
+        },
+        {
+          "key": "equipment_type",
+          "type": "multi_select",
+          "required": false,
+          "label": {
+            "en": "Equipment",
+            "fr": "Équipements",
+            "de": "Geräte",
+            "es": "Equipos"
+          },
+          "description": {
+            "en": "Leave empty for any.",
+            "fr": "Laissez vide pour tous.",
+            "de": "Leer lassen für alle.",
+            "es": "Déjelo vacío para todos."
+          },
+          "options": [
+            {
+              "value": "vm",
+              "label": {
+                "en": "Micro-inverter",
+                "fr": "Micro-onduleur",
+                "de": "Mikrowechselrichter",
+                "es": "Microinversor"
+              }
+            },
+            {
+              "value": "battery",
+              "label": {
+                "en": "Battery",
+                "fr": "Batterie",
+                "de": "Batterie",
+                "es": "Batería"
+              }
+            },
+            {
+              "value": "meter",
+              "label": {
+                "en": "Smart meter",
+                "fr": "Compteur intelligent",
+                "de": "Intelligenter Zähler",
+                "es": "Contador inteligente"
+              }
+            },
+            {
+              "value": "evse",
+              "label": {
+                "en": "Charging station",
+                "fr": "Borne de recharge",
+                "de": "Ladestation",
+                "es": "Cargador"
+              }
+            }
+          ]
+        }
+      ],
+      "variables": [
+        {
+          "key": "equipment_name",
+          "type": "string",
+          "label": {
+            "en": "Equipment",
+            "fr": "Équipement",
+            "de": "Gerät",
+            "es": "Equipo"
+          }
+        },
+        {
+          "key": "equipment_type_name",
+          "type": "string",
+          "label": {
+            "en": "Type of equipment",
+            "fr": "Type d’équipement",
+            "de": "Geräteart",
+            "es": "Tipo de equipo"
+          }
+        },
+        {
+          "key": "state",
+          "type": "string",
+          "label": {
+            "en": "State",
+            "fr": "État",
+            "de": "Zustand",
+            "es": "Estado"
+          }
+        },
+        {
+          "key": "station_name",
+          "type": "string",
+          "label": {
+            "en": "Station",
+            "fr": "Centrale",
+            "de": "Anlage",
+            "es": "Instalación"
+          }
+        }
+      ]
+    },
+    {
+      "key": "firmware_update_available",
+      "label": {
+        "en": "Isypower: firmware update available",
+        "fr": "Isypower : mise à jour du firmware disponible",
+        "de": "Isypower: Firmware-Update verfügbar",
+        "es": "Isypower: actualización de firmware disponible"
+      },
+      "description": {
+        "en": "Isypower offers a new firmware for a piece of equipment (checked every six hours).",
+        "fr": "Isypower propose un nouveau firmware pour un équipement (vérifié toutes les six heures).",
+        "de": "Isypower bietet eine neue Firmware für ein Gerät an (alle sechs Stunden geprüft).",
+        "es": "Isypower ofrece un nuevo firmware para un equipo (comprobado cada seis horas)."
+      },
+      "fields": [
+        {
+          "key": "station",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Station",
+            "fr": "Centrale",
+            "de": "Anlage",
+            "es": "Instalación"
+          },
+          "description": {
+            "en": "Leave empty for any.",
+            "fr": "Laissez vide pour tous.",
+            "de": "Leer lassen für alle.",
+            "es": "Déjelo vacío para todos."
+          },
+          "required": false
+        }
+      ],
+      "variables": [
+        {
+          "key": "equipment_name",
+          "type": "string",
+          "label": {
+            "en": "Equipment",
+            "fr": "Équipement",
+            "de": "Gerät",
+            "es": "Equipo"
+          }
+        },
+        {
+          "key": "station_name",
+          "type": "string",
+          "label": {
+            "en": "Station",
+            "fr": "Centrale",
+            "de": "Anlage",
+            "es": "Instalación"
+          }
+        }
+      ]
+    },
+    {
+      "key": "station_reporting_changed",
+      "label": {
+        "en": "Isypower: station silent or reporting again",
+        "fr": "Isypower : centrale muette ou de retour",
+        "de": "Isypower: Anlage stumm oder meldet wieder",
+        "es": "Isypower: instalación sin datos o de vuelta"
+      },
+      "description": {
+        "en": "The box of a station has sent nothing to the cloud for 20 minutes (Wi-Fi, power cut), or reports again.",
+        "fr": "Le boîtier d’une centrale n’a rien envoyé au cloud depuis 20 minutes (Wi-Fi, coupure de courant), ou remonte à nouveau.",
+        "de": "Die Box einer Anlage hat seit 20 Minuten nichts an die Cloud gesendet (WLAN, Stromausfall) oder meldet wieder.",
+        "es": "La caja de una instalación no ha enviado nada a la nube desde hace 20 minutos (wifi, corte de luz), o vuelve a enviar."
+      },
+      "fields": [
+        {
+          "key": "station",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Station",
+            "fr": "Centrale",
+            "de": "Anlage",
+            "es": "Instalación"
+          },
+          "description": {
+            "en": "Leave empty for any.",
+            "fr": "Laissez vide pour tous.",
+            "de": "Leer lassen für alle.",
+            "es": "Déjelo vacío para todos."
+          },
+          "required": false
+        },
+        {
+          "key": "state",
+          "type": "select",
+          "required": false,
+          "label": {
+            "en": "Becomes",
+            "fr": "Devient",
+            "de": "Wird",
+            "es": "Pasa a"
+          },
+          "description": {
+            "en": "Leave empty for any.",
+            "fr": "Laissez vide pour tous.",
+            "de": "Leer lassen für alle.",
+            "es": "Déjelo vacío para todos."
+          },
+          "options": [
+            {
+              "value": "stale",
+              "label": {
+                "en": "Silent",
+                "fr": "Muette",
+                "de": "Stumm",
+                "es": "Sin datos"
+              }
+            },
+            {
+              "value": "reporting",
+              "label": {
+                "en": "Reporting",
+                "fr": "Remonte",
+                "de": "Meldet",
+                "es": "Enviando"
+              }
+            }
+          ]
+        }
+      ],
+      "variables": [
+        {
+          "key": "state",
+          "type": "string",
+          "label": {
+            "en": "State",
+            "fr": "État",
+            "de": "Zustand",
+            "es": "Estado"
+          }
+        },
+        {
+          "key": "minutes_since_update",
+          "type": "number",
+          "label": {
+            "en": "Minutes since the last report",
+            "fr": "Minutes depuis le dernier relevé",
+            "de": "Minuten seit der letzten Meldung",
+            "es": "Minutos desde el último informe"
+          }
+        },
+        {
+          "key": "last_update",
+          "type": "string",
+          "label": {
+            "en": "Last report",
+            "fr": "Dernier relevé",
+            "de": "Letzte Meldung",
+            "es": "Último informe"
+          }
+        },
+        {
+          "key": "station_name",
+          "type": "string",
+          "label": {
+            "en": "Station",
+            "fr": "Centrale",
+            "de": "Anlage",
+            "es": "Instalación"
+          }
+        }
+      ]
+    }
+  ],
+  "scene_actions": [
+    {
+      "key": "set_battery_mode",
+      "timeout_seconds": 30,
+      "label": {
+        "en": "Isypower: set the mode of a battery",
+        "fr": "Isypower : changer le mode d’une batterie",
+        "de": "Isypower: Modus einer Batterie ändern",
+        "es": "Isypower: cambiar el modo de una batería"
+      },
+      "description": {
+        "en": "Intelligent, calendar or manual control; in manual control, standby, forced charge or discharge at a given power. Master or standalone batteries only.",
+        "fr": "Pilotage intelligent, calendrier ou manuel ; en manuel, veille, charge ou décharge forcée à une puissance donnée. Batteries maîtres ou autonomes seulement.",
+        "de": "Intelligente, zeitplangesteuerte oder manuelle Steuerung; manuell Standby, erzwungenes Laden oder Entladen mit einer Leistung. Nur Master- oder Einzelbatterien.",
+        "es": "Control inteligente, por calendario o manual; en manual, espera, carga o descarga forzada a una potencia dada. Solo baterías maestras o independientes."
+      },
+      "fields": [
+        {
+          "key": "battery",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Battery",
+            "fr": "Batterie",
+            "de": "Batterie",
+            "es": "Batería"
+          },
+          "required": true
+        },
+        {
+          "key": "control_mode",
+          "type": "select",
+          "required": true,
+          "label": {
+            "en": "Control mode",
+            "fr": "Mode de pilotage",
+            "de": "Steuermodus",
+            "es": "Modo de control"
+          },
+          "options": [
+            {
+              "value": "intelligent",
+              "label": {
+                "en": "Intelligent (needs the smart meter)",
+                "fr": "Intelligent (demande le compteur intelligent)",
+                "de": "Intelligent (erfordert den intelligenten Zähler)",
+                "es": "Inteligente (necesita el contador inteligente)"
+              }
+            },
+            {
+              "value": "manual",
+              "label": {
+                "en": "Manual",
+                "fr": "Manuel",
+                "de": "Manuell",
+                "es": "Manual"
+              }
+            },
+            {
+              "value": "calendar",
+              "label": {
+                "en": "Calendar",
+                "fr": "Calendrier",
+                "de": "Zeitplan",
+                "es": "Calendario"
+              }
+            }
+          ]
+        },
+        {
+          "key": "manual_mode",
+          "type": "select",
+          "required": false,
+          "label": {
+            "en": "Manual mode",
+            "fr": "Mode manuel",
+            "de": "Manueller Modus",
+            "es": "Modo manual"
+          },
+          "description": {
+            "en": "Manual control only.",
+            "fr": "Pilotage manuel seulement.",
+            "de": "Nur manuelle Steuerung.",
+            "es": "Solo control manual."
+          },
+          "options": [
+            {
+              "value": "standby",
+              "label": {
+                "en": "Standby",
+                "fr": "Veille",
+                "de": "Standby",
+                "es": "En espera"
+              }
+            },
+            {
+              "value": "charge",
+              "label": {
+                "en": "Charge",
+                "fr": "Charge",
+                "de": "Laden",
+                "es": "Carga"
+              }
+            },
+            {
+              "value": "discharge",
+              "label": {
+                "en": "Discharge",
+                "fr": "Décharge",
+                "de": "Entladen",
+                "es": "Descarga"
+              }
+            }
+          ]
+        },
+        {
+          "key": "power",
+          "type": "number",
+          "required": false,
+          "min": 0,
+          "max": 10000,
+          "label": {
+            "en": "Power (W)",
+            "fr": "Puissance (W)",
+            "de": "Leistung (W)",
+            "es": "Potencia (W)"
+          },
+          "description": {
+            "en": "Manual charge or discharge. Empty: the current one.",
+            "fr": "Charge ou décharge manuelle. Vide : celle en cours.",
+            "de": "Manuelles Laden oder Entladen. Leer: die aktuelle.",
+            "es": "Carga o descarga manual. Vacío: la actual."
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "key": "control_mode",
+          "type": "string",
+          "label": {
+            "en": "Control mode",
+            "fr": "Mode de pilotage",
+            "de": "Steuermodus",
+            "es": "Modo de control"
+          }
+        },
+        {
+          "key": "manual_mode",
+          "type": "string",
+          "label": {
+            "en": "Manual mode",
+            "fr": "Mode manuel",
+            "de": "Manueller Modus",
+            "es": "Modo manual"
+          }
+        },
+        {
+          "key": "power",
+          "type": "number",
+          "label": {
+            "en": "Power (W)",
+            "fr": "Puissance (W)",
+            "de": "Leistung (W)",
+            "es": "Potencia (W)"
+          }
+        }
+      ]
+    },
+    {
+      "key": "set_minimum_charge",
+      "timeout_seconds": 30,
+      "label": {
+        "en": "Isypower: set the minimum charge of a battery",
+        "fr": "Isypower : régler la charge minimale d’une batterie",
+        "de": "Isypower: Mindestladung einer Batterie einstellen",
+        "es": "Isypower: ajustar la carga mínima de una batería"
+      },
+      "description": {
+        "en": "The battery no longer discharges below this level: keep a reserve before a storm, free it at night.",
+        "fr": "La batterie ne se décharge plus sous ce niveau : garder une réserve avant un orage, la libérer la nuit.",
+        "de": "Die Batterie entlädt sich nicht mehr unter diesen Stand: eine Reserve vor einem Gewitter halten, nachts freigeben.",
+        "es": "La batería ya no se descarga por debajo de este nivel: guardar una reserva antes de una tormenta, liberarla de noche."
+      },
+      "fields": [
+        {
+          "key": "battery",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Battery",
+            "fr": "Batterie",
+            "de": "Batterie",
+            "es": "Batería"
+          },
+          "required": true
+        },
+        {
+          "key": "level",
+          "type": "number",
+          "required": true,
+          "min": 5,
+          "max": 100,
+          "label": {
+            "en": "Minimum charge (%)",
+            "fr": "Charge minimale (%)",
+            "de": "Mindestladung (%)",
+            "es": "Carga mínima (%)"
+          },
+          "description": {
+            "en": "5 to 100, by steps of 5.",
+            "fr": "De 5 à 100, par pas de 5.",
+            "de": "5 bis 100, in 5er-Schritten.",
+            "es": "De 5 a 100, de 5 en 5."
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "key": "minimum_charge",
+          "type": "number",
+          "label": {
+            "en": "Minimum charge (%)",
+            "fr": "Charge minimale (%)",
+            "de": "Mindestladung (%)",
+            "es": "Carga mínima (%)"
+          }
+        }
+      ]
+    },
+    {
+      "key": "get_energy_report",
+      "timeout_seconds": 30,
+      "label": {
+        "en": "Isypower: read the energy report",
+        "fr": "Isypower : lire le bilan énergétique",
+        "de": "Isypower: Energiebilanz lesen",
+        "es": "Isypower: leer el balance energético"
+      },
+      "description": {
+        "en": "The energy of a period, for the next actions: a message every evening, a condition on the self-sufficiency.",
+        "fr": "L’énergie d’une période, pour les actions suivantes : un message chaque soir, une condition sur l’autonomie.",
+        "de": "Die Energie eines Zeitraums für die nächsten Aktionen: jeden Abend eine Nachricht, eine Bedingung auf die Autarkie.",
+        "es": "La energía de un periodo, para las acciones siguientes: un mensaje cada noche, una condición sobre la autosuficiencia."
+      },
+      "fields": [
+        {
+          "key": "station",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Station",
+            "fr": "Centrale",
+            "de": "Anlage",
+            "es": "Instalación"
+          },
+          "description": {
+            "en": "Empty: the first station.",
+            "fr": "Vide : la première centrale.",
+            "de": "Leer: die erste Anlage.",
+            "es": "Vacío: la primera instalación."
+          },
+          "required": false
+        },
+        {
+          "key": "period",
+          "type": "select",
+          "required": false,
+          "default": "day",
+          "label": {
+            "en": "Period",
+            "fr": "Période",
+            "de": "Zeitraum",
+            "es": "Periodo"
+          },
+          "options": [
+            {
+              "value": "day",
+              "label": {
+                "en": "Today",
+                "fr": "Aujourd’hui",
+                "de": "Heute",
+                "es": "Hoy"
+              }
+            },
+            {
+              "value": "month",
+              "label": {
+                "en": "This month",
+                "fr": "Ce mois-ci",
+                "de": "Dieser Monat",
+                "es": "Este mes"
+              }
+            },
+            {
+              "value": "year",
+              "label": {
+                "en": "This year",
+                "fr": "Cette année",
+                "de": "Dieses Jahr",
+                "es": "Este año"
+              }
+            },
+            {
+              "value": "all",
+              "label": {
+                "en": "Since installation",
+                "fr": "Depuis l’installation",
+                "de": "Seit Installation",
+                "es": "Desde la instalación"
+              }
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "key": "production_kwh",
+          "type": "number",
+          "label": {
+            "en": "Production (kWh)",
+            "fr": "Production (kWh)",
+            "de": "Erzeugung (kWh)",
+            "es": "Producción (kWh)"
+          }
+        },
+        {
+          "key": "consumption_kwh",
+          "type": "number",
+          "label": {
+            "en": "Consumption (kWh)",
+            "fr": "Consommation (kWh)",
+            "de": "Verbrauch (kWh)",
+            "es": "Consumo (kWh)"
+          }
+        },
+        {
+          "key": "grid_import_kwh",
+          "type": "number",
+          "label": {
+            "en": "Bought (kWh)",
+            "fr": "Acheté (kWh)",
+            "de": "Bezogen (kWh)",
+            "es": "Comprado (kWh)"
+          }
+        },
+        {
+          "key": "grid_export_kwh",
+          "type": "number",
+          "label": {
+            "en": "Sold (kWh)",
+            "fr": "Vendu (kWh)",
+            "de": "Eingespeist (kWh)",
+            "es": "Vendido (kWh)"
+          }
+        },
+        {
+          "key": "battery_charge_kwh",
+          "type": "number",
+          "label": {
+            "en": "Stored in batteries (kWh)",
+            "fr": "Stocké en batterie (kWh)",
+            "de": "In Batterien geladen (kWh)",
+            "es": "Almacenado en baterías (kWh)"
+          }
+        },
+        {
+          "key": "battery_discharge_kwh",
+          "type": "number",
+          "label": {
+            "en": "Drawn from batteries (kWh)",
+            "fr": "Restitué par les batteries (kWh)",
+            "de": "Aus Batterien entnommen (kWh)",
+            "es": "Entregado por las baterías (kWh)"
+          }
+        },
+        {
+          "key": "self_sufficiency_percent",
+          "type": "number",
+          "label": {
+            "en": "Self-sufficiency (%)",
+            "fr": "Autonomie (%)",
+            "de": "Autarkie (%)",
+            "es": "Autosuficiencia (%)"
+          }
+        },
+        {
+          "key": "summary",
+          "type": "string",
+          "label": {
+            "en": "Summary",
+            "fr": "Résumé",
+            "de": "Zusammenfassung",
+            "es": "Resumen"
+          }
+        }
+      ]
+    }
+  ]
+}
