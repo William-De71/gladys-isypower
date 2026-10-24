@@ -5,6 +5,12 @@ follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions
 follow [Semantic Versioning](https://semver.org/). This file is generated at
 each release from the Conventional Commits: do not edit it by hand.
 
+## [0.1.1] - 2026-10-24
+
+### Security
+
+- **security:** build the image on Node.js 24.22.1 or later ([f7f9357](https://github.com/William-De71/gladys-isypower/commit/f7f9357ba56e20309608151676114f6bb2ca2170))
+
 ## [0.1.0] - 2026-10-17
 
 ### Added
@@ -19,4 +25,5 @@ each release from the Conventional Commits: do not edit it by hand.
 - Cloud transport: the account of the Isypower Cloud application, read every 3 to 15 minutes; a refused login stops the readings until the configuration changes, so that the account is never locked.
 - English, French, German and Spanish everywhere: settings, devices, widgets, scenes and documentation.
 
+[0.1.1]: https://github.com/William-De71/gladys-isypower/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/William-De71/gladys-isypower/releases/tag/v0.1.0
