@@ -12,7 +12,7 @@ Intégration communautaire, ni développée ni approuvée par Materfrance.
 
 ## Prérequis
 
-- Gladys Assistant **5.2.0** ou plus récent.
+- Gladys Assistant **5.3.0** ou plus récent.
 - Un compte Isypower Cloud (l’e-mail et le mot de passe de l’application) avec au moins une centrale.
 - Un accès à internet depuis Gladys : les données viennent du cloud de Materfrance, jamais du réseau local.
 

@@ -112,7 +112,8 @@ test/helpers/fixtures.js            fake Isypower Cloud (reconstructed answers)
   release nothing.
 - **Manifest.** Texts are objects `{ "en", "fr", "de", "es" }`; the catalog
   `description` holds 10 to 100 characters per language; the file stays under
-  100 KB. `gladys_version` is `>=5.2.0` (button forms, `text` / `select`
+  100 KB. `gladys_version` is `>=5.3.0` (catalog keywords and countries;
+  button forms, `text` / `select`
   features). Transport: `["cloud"]`. No permission.
 - **Forum drafts** (`.github/forum-*.md`) are never committed.
 - **Style.** Prettier formats, ESLint catches mistakes. Comments explain why,
