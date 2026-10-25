@@ -5,6 +5,12 @@ follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions
 follow [Semantic Versioning](https://semver.org/). This file is generated at
 each release from the Conventional Commits: do not edit it by hand.
 
+## [0.2.0] - 2026-10-25
+
+### Added
+
+- require Gladys 5.3 and declare catalog keywords and countries ([daaf1eb](https://github.com/William-De71/gladys-isypower/commit/daaf1eba7d640ffe14fd1a6ad72c7d90a941a651))
+
 ## [0.1.1] - 2026-10-24
 
 ### Security
@@ -25,5 +31,6 @@ each release from the Conventional Commits: do not edit it by hand.
 - Cloud transport: the account of the Isypower Cloud application, read every 3 to 15 minutes; a refused login stops the readings until the configuration changes, so that the account is never locked.
 - English, French, German and Spanish everywhere: settings, devices, widgets, scenes and documentation.
 
+[0.2.0]: https://github.com/William-De71/gladys-isypower/compare/v0.1.1...v0.2.0
 [0.1.1]: https://github.com/William-De71/gladys-isypower/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/William-De71/gladys-isypower/releases/tag/v0.1.0

@@ -1,6 +1,6 @@
 {
   "name": "gladys-isypower",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "private": true,
   "description": "External Gladys Assistant integration for Isypower Cloud (Materfrance, formerly Izypower): solar production, house consumption, grid exchange and home batteries, with energy indexes, battery modes, scenes and dashboard widgets.",
   "homepage": "https://github.com/William-De71/gladys-isypower",
